@@ -17,7 +17,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     
-    private var tip: Float!
+    private var tip: Float = 0.1
     
 //    MARK: - Helpers
     
@@ -30,12 +30,11 @@ class CalculatorViewController: UIViewController {
         
         sender.isSelected = true
         
-        switch sender {
-        case zeroPctButton: tip = 0
-        case tenPctButton: tip = 10.0/100.0
-        case twentyPctButton: tip = 20.0/100.0
-        default: break
-        }
+        guard let buttonTitle = sender.currentTitle else { return }
+        
+        let numberOfButtonTitle = buttonTitle.dropLast()
+        guard let currentTipCount = Float(numberOfButtonTitle) else { return }
+        tip = currentTipCount / 100.0
     }
     
     
@@ -45,12 +44,7 @@ class CalculatorViewController: UIViewController {
     
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-        if tip != nil {
-            print(tip)
-        } else {
-            tip = 10.0/100.0
-            print(tip)
-        }
+        print(tip)
     }
     
     
