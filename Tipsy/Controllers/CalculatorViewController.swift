@@ -24,6 +24,8 @@ class CalculatorViewController: UIViewController {
     
     
     @IBAction func tipChanged(_ sender: UIButton) {
+//        скрыть клавиатуру
+        billTextField.endEditing(true)
         
         zeroPctButton.isSelected = false
         tenPctButton.isSelected = false
@@ -48,10 +50,13 @@ class CalculatorViewController: UIViewController {
     }
     
     
-    
     @IBAction func calculatePressed(_ sender: UIButton) {
-        print("tip \(tip)")
-        print("peoples \(peoples)")
+        
+        guard let totalNumber = Float(billTextField.text ?? "0") else { return }
+        
+        let result = (totalNumber + (totalNumber * tip)) / Float(peoples)
+        let resultToDecimal = String(format: "%.2f", result)
+        print(resultToDecimal)
     }
     
    
