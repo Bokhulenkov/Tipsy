@@ -17,10 +17,28 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     
+    private var tip: Int!
+    
 //    MARK: - Helpers
     
     
     @IBAction func tipChanged(_ sender: UIButton) {
+        
+        switch sender {
+        case zeroPctButton: zeroPctButton.isSelected = true
+                            tenPctButton.isSelected = false
+                            twentyPctButton.isSelected = false
+                            tip = 0
+        case tenPctButton: zeroPctButton.isSelected = false
+                            tenPctButton.isSelected = true
+                            twentyPctButton.isSelected = false
+                            tip = 10
+        case twentyPctButton: zeroPctButton.isSelected = false
+                            tenPctButton.isSelected = false
+                            twentyPctButton.isSelected = true
+                            tip = 20
+        default: break
+        }
     }
     
     
@@ -28,7 +46,14 @@ class CalculatorViewController: UIViewController {
     }
     
     
+    
     @IBAction func calculatePressed(_ sender: UIButton) {
+        if tip != nil {
+            print(tip)
+        } else {
+            tip = 10
+            print(tip)
+        }
     }
     
     
