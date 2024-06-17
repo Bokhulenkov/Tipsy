@@ -55,11 +55,12 @@ class CalculatorViewController: UIViewController {
         
         let result = (totalNumber + (totalNumber * tip)) / Float(peoples)
         resultToDecimal = String(format: "%.2f", result)
-        print(resultToDecimal)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let secondVC = storyboard.instantiateViewController(withIdentifier: "toResultScrean") as? ResultsViewController else { return }
         secondVC.totalForPerson = resultToDecimal
+        secondVC.tip = tip * 100
+        secondVC.peoples = peoples
         show(secondVC, sender: nil)
     }
     
@@ -69,10 +70,7 @@ class CalculatorViewController: UIViewController {
     //        guard segue.identifier == "toResultScrean" else { return }
     //        guard let destination = segue.destination as? ResultsViewController else { return }
     //        destination.totalForPerson = resultToDecimal
-    //    }
-    
-    
-    
+    //    } 
     
 }
 

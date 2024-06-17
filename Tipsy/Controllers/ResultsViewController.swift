@@ -14,13 +14,16 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var settingsLabel: UILabel!
     
     var totalForPerson = "0"
+    var tip: Float = 0.0
+    var peoples = 2
     
     //  MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                totalLabel.text = totalForPerson
+        totalLabel.text = totalForPerson
+        settingsLabel.text = "Split between \(peoples) people, with \(String(format: "%.0f", tip))%."
     }
     
     // MARK: - Helpers
@@ -29,6 +32,5 @@ class ResultsViewController: UIViewController {
         
         dismiss(animated: true)
     }
-    
     
 }
