@@ -57,13 +57,22 @@ class CalculatorViewController: UIViewController {
         resultToDecimal = String(format: "%.2f", result)
         print(resultToDecimal)
         
-        performSegue(withIdentifier: "toResultScrean", sender: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let secondVC = storyboard.instantiateViewController(withIdentifier: "toResultScrean") as? ResultsViewController else { return }
+        secondVC.totalForPerson = resultToDecimal
+        show(secondVC, sender: nil)
     }
-//    segue передача данных
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "toResultScrean" else { return }
-        guard let destination = segue.destination as? ResultsViewController else { return }
-        destination.totalForPerson = resultToDecimal
-    }
+    
+    //    performSegue(withIdentifier: "toResultScrean", sender: nil)
+    //    segue передача данных
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        guard segue.identifier == "toResultScrean" else { return }
+    //        guard let destination = segue.destination as? ResultsViewController else { return }
+    //        destination.totalForPerson = resultToDecimal
+    //    }
+    
+    
+    
+    
 }
 
