@@ -40,7 +40,6 @@ class CalculatorViewController: UIViewController {
         tip = currentTipCount / 100.0
     }
     
-    
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         sender.minimumValue = 1
         sender.maximumValue = 10
@@ -49,17 +48,15 @@ class CalculatorViewController: UIViewController {
         splitNumberLabel.text = textValue
     }
     
-    
     @IBAction func calculatePressed(_ sender: UIButton) {
+// переход на второй экран
+        performSegue(withIdentifier: "toResultScrean", sender: nil)
         
         guard let totalNumber = Float(billTextField.text ?? "0") else { return }
         
         let result = (totalNumber + (totalNumber * tip)) / Float(peoples)
         let resultToDecimal = String(format: "%.2f", result)
-        print(resultToDecimal)
     }
-    
-   
-    
+  
 }
 
