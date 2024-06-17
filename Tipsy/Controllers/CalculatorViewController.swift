@@ -18,13 +18,14 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var splitNumberLabel: UILabel!
     
     private var tip: Float = 0.1
-    private var peoples = 1
+    private var peoples = 2
+    private var resultToDecimal = ""
     
-//    MARK: - Helpers
     
+    //    MARK: - Helpers
     
     @IBAction func tipChanged(_ sender: UIButton) {
-//        скрыть клавиатуру
+        //        скрыть клавиатуру
         billTextField.endEditing(true)
         
         zeroPctButton.isSelected = false
@@ -41,7 +42,7 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        sender.minimumValue = 1
+        sender.minimumValue = 2
         sender.maximumValue = 10
         peoples = Int(sender.value)
         let textValue = String(peoples)
@@ -49,14 +50,20 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-// переход на второй экран
-        performSegue(withIdentifier: "toResultScrean", sender: nil)
         
         guard let totalNumber = Float(billTextField.text ?? "0") else { return }
         
         let result = (totalNumber + (totalNumber * tip)) / Float(peoples)
-        let resultToDecimal = String(format: "%.2f", result)
+        resultToDecimal = String(format: "%.2f", result)
+        print(resultToDecimal)
+        
+        performSegue(withIdentifier: "toResultScrean", sender: nil)
     }
-  
+//    segue передача данных
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "toResultScrean" else { return }
+        guard let destination = segue.destination as? ResultsViewController else { return }
+        destination.totalForPerson = resultToDecimal
+    }
 }
 

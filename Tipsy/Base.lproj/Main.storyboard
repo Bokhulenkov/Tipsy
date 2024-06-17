@@ -205,7 +205,7 @@
                         <outlet property="tenPctButton" destination="7y6-Kf-yF0" id="pjb-Ym-iLQ"/>
                         <outlet property="twentyPctButton" destination="UtR-dU-EKt" id="cw6-un-QYw"/>
                         <outlet property="zeroPctButton" destination="XzR-0E-Xf7" id="PKr-q6-cAa"/>
-                        <segue destination="Dnf-m2-FPm" kind="show" identifier="toResultScrean" id="dsu-xm-len"/>
+                        <segue destination="Dnf-m2-FPm" kind="show" identifier="toResultScrean" id="Utv-dQ-qkQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -215,7 +215,7 @@
         <!--Results View Controller-->
         <scene sceneID="bJV-Cc-sXH">
             <objects>
-                <viewController id="Dnf-m2-FPm" customClass="ResultsViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toResultScrean" id="Dnf-m2-FPm" customClass="ResultsViewController" customModule="Tipsy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DNW-gk-FsX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
