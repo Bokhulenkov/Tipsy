@@ -17,26 +17,23 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     
-    private var tip: Int!
+    private var tip: Float!
     
 //    MARK: - Helpers
     
     
     @IBAction func tipChanged(_ sender: UIButton) {
         
+        zeroPctButton.isSelected = false
+        tenPctButton.isSelected = false
+        twentyPctButton.isSelected = false
+        
+        sender.isSelected = true
+        
         switch sender {
-        case zeroPctButton: zeroPctButton.isSelected = true
-                            tenPctButton.isSelected = false
-                            twentyPctButton.isSelected = false
-                            tip = 0
-        case tenPctButton: zeroPctButton.isSelected = false
-                            tenPctButton.isSelected = true
-                            twentyPctButton.isSelected = false
-                            tip = 10
-        case twentyPctButton: zeroPctButton.isSelected = false
-                            tenPctButton.isSelected = false
-                            twentyPctButton.isSelected = true
-                            tip = 20
+        case zeroPctButton: tip = 0
+        case tenPctButton: tip = 10.0/100.0
+        case twentyPctButton: tip = 20.0/100.0
         default: break
         }
     }
@@ -51,7 +48,7 @@ class CalculatorViewController: UIViewController {
         if tip != nil {
             print(tip)
         } else {
-            tip = 10
+            tip = 10.0/100.0
             print(tip)
         }
     }
