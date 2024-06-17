@@ -18,6 +18,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var splitNumberLabel: UILabel!
     
     private var tip: Float = 0.1
+    private var peoples = 1
     
 //    MARK: - Helpers
     
@@ -39,14 +40,21 @@ class CalculatorViewController: UIViewController {
     
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        sender.minimumValue = 1
+        sender.maximumValue = 10
+        peoples = Int(sender.value)
+        let textValue = String(peoples)
+        splitNumberLabel.text = textValue
     }
     
     
     
     @IBAction func calculatePressed(_ sender: UIButton) {
-        print(tip)
+        print("tip \(tip)")
+        print("peoples \(peoples)")
     }
     
+   
     
 }
 
