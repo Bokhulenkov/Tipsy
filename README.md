@@ -1,5 +1,4 @@
 # Tipsy
-
 ![tipsy](Images/1.gif)
 
 <p align="left"> 
